@@ -42,7 +42,7 @@ public class Fraction {
     public Fraction(int numerator, int denominator) {
         this.numerator = numerator;
         this.denominator = denominator;
-        checkSign();
+        this.checkSign();
     }
 
     /**
@@ -53,6 +53,15 @@ public class Fraction {
     public Fraction(Fraction f) {
         this.numerator = f.numerator;
         this.denominator = f.denominator;
+        this.checkSign();
+    }
+    
+    /**
+     * Constructor to initialize a zero fraction.
+     */
+    public Fraction (){
+        this.denominator=0;
+        this.numerator=0;
     }
 
     /**
@@ -84,7 +93,7 @@ public class Fraction {
      *  If this is called after the {@link #reduce() } method is
      *  called before this then it will return the reduced version of the fraction.
      */
-    public int getDenomitor() {
+    public int getDenominator() {
         return denominator;
     }
 
@@ -94,7 +103,7 @@ public class Fraction {
      * 
      * This will check the sign of the input using  {@link #checkSign() } to ensure that the sign of the fraction is correct
      */
-    public void setDenomitor(int denominator) {
+    public void setDenominator(int denominator) {
         this.denominator = denominator;
         checkSign();
     }
@@ -140,48 +149,142 @@ public class Fraction {
         f.reduce();
         this.reduce();
         
-        if (f.numerator == this.numerator && f.denominator == this.denominator){
-            return true;
-        } else{  // else not really necessary...
-            return false;
-        }
+        return f.getNumerator() == this.getNumerator() && f.getDenominator() == this.getDenominator(); // else not really necessary...
         
     }
-   
+    
     /**
-     *  Reduces 
+     * Finds and returns the greatest Common Factor between the numerator and denominator of this fraction
+     * 
+     * @return greatest Common Factor
      */
-    public void reduce() {
-        int top = numerator;
-        int bottom = denominator;
-        int larger = 0;
-
-        // allow for negative fractions. Otherwise this will get messed up
-        if (numerator < 0) {
-            top = -numerator;
-        }
-        
-        // set the larger number to larger
-        larger = top;
-        if (bottom > top) {
-            larger = bottom;
-        }
-
-        // find the largest whole number that will divide into the numerator and denominator evenly.
-        // This means use mod...
-        int commonDenominator = 0;
+    private int commonFactor(){
+        int larger = numerator;
+         if ( denominator > numerator) {
+            larger = denominator;
+        }       
+        int greatestCommonFactor = 0;
         for (int i = larger; i >= 2; i--) {
             if (numerator % i == 0 && denominator % i == 0) {
-                commonDenominator = i;
-                // once its found break out
+                greatestCommonFactor = i;
+                // once its found break out and return 
                 break;
             }
         }
+        return greatestCommonFactor;
+    }
+      
+      
+    /**
+     *  Reduces the fraction to its lowest form
+     */
+    public void reduce() {
+        // If it is 0 set everything to zero and move on.
+        if (getNumerator() == 0 || getDenominator()==0){
+            setDenominator(0);
+            setNumerator(0);
+        } else{
+            int greatestCommonFactor = commonFactor();
 
-        // divide both values by the common denominator 
-        if (commonDenominator != 0) {
-            numerator /= commonDenominator;
-            denominator /= commonDenominator;
+            // divide both values by the common denominator 
+            if (greatestCommonFactor != 0) {
+                numerator /= greatestCommonFactor;
+                denominator /= greatestCommonFactor;
+            }
         }
+    }
+    
+    /**
+     * Add 2 fractions together.
+     * 
+     * @param f - Fraction to add to this one
+     * @return - Added Fraction.
+     * 
+     * This will return a reduced fraction as per the instructions.
+     */
+    public Fraction add(Fraction f){
+        // set up some initial values/
+        int den;
+        int num1;
+        int num2;
+        
+        // do the math
+        den = this.getDenominator() * f.getDenominator();
+        
+        num1 = this.getNumerator() * f.getDenominator();
+        num2 = this.getDenominator() * f.getNumerator();
+        
+        // make a new fraction
+        Fraction added = new Fraction(num1 + num2, den);
+        
+        // reduce the fraction
+        added.reduce();
+        
+        return added;
+    }
+    
+    /**
+     * Subtract a fraction from this one
+     * 
+     * @param f - A Fraction to subtract.
+     * @return - the difference in fractions
+     */
+    public Fraction subtract(Fraction f){
+        int den;
+        int num1;
+        int num2;
+        
+        den = this.getDenominator() * f.getDenominator();
+        
+        num1 = this.getNumerator() * f.getDenominator();
+        num2 = this.getDenominator() * f.getNumerator();
+        
+        // make a new fraction
+        Fraction subtracted = new Fraction(num1 - num2, den);
+        
+        // reduce the fraction
+        subtracted.reduce();
+        
+        return subtracted;       
+    }
+    
+    /**
+     * Multiply Fractions
+     * 
+     * @param f - The Fraction to multiply by
+     * @return - The multiplied Fraction.
+     */
+    public Fraction multiply(Fraction f){
+        int den;
+        int num;
+        
+        den = this.getDenominator() * f.getDenominator();
+        num = this.getNumerator() * f.getNumerator();
+        
+        Fraction multiplied = new Fraction (num,den);
+        
+        multiplied.reduce();
+        
+        return multiplied;
+    }
+    
+    /**
+     * Divide fractions
+     * 
+     * @param f - Fraction to divide by
+     * @return - Divided Fraction.
+     */
+    public Fraction divide(Fraction f){
+        int num1;
+        int num2;
+        
+        num1 = this.getNumerator() * f.getDenominator();
+        num2 = f.getNumerator() * this.getDenominator();
+        
+        Fraction divided = new Fraction(num1, num2);
+        
+        divided.reduce();
+        
+        return divided;
     }
 } 
