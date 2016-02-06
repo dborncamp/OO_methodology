@@ -35,7 +35,7 @@ public class Driver {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Fraction F1 = new Fraction(1,2);
+        Fraction F1 = new Fraction(1,2); 
         Fraction F2 = new Fraction(1,4);
         System.out.println(F1);
         
