@@ -36,7 +36,7 @@ public class Driver {
      */
     public static void main(String[] args) {
         Fraction F1 = new Fraction(1,2); 
-        Fraction F2 = new Fraction(1,4);
+        Fraction F2 = new Fraction(1,4); 
         System.out.println(F1);
         
         F1.reduce();
