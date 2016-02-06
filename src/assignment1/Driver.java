@@ -35,11 +35,28 @@ public class Driver {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Fraction test = new Fraction(2,-4);
-        System.out.println(test);
+        Fraction F1 = new Fraction(1,2);
+        Fraction F2 = new Fraction(1,4);
+        System.out.println(F1);
         
-        test.reduce();
-        System.out.println(test);
+        F1.reduce();
+        System.out.println("F1: " + F1);
+        System.out.println("F2: "+F2);
+        
+        Fraction add = F1.add(F2);
+        System.out.println("Addition: "+add);
+        
+        Fraction sub = F1.subtract(F2);
+        System.out.println("Subtraction: "+sub);
+        
+        Fraction multi = F1.multiply(F2);
+        System.out.println("Multiplication: " + multi);
+        
+        Fraction div = F1.divide(F2);
+        System.out.println("Division: "+div);
+        
+        System.out.println(div.equals(multi));
+                
     }
     
 }
