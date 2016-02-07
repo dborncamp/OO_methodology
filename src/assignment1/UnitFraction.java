@@ -31,6 +31,30 @@ package assignment1;
  * @author Dave Borncamp <dbornc1@students.towson.edu>
  * @date {date?date?string("dd/mm/yyyy")}
  */
-public class UnitFraction {
+public class UnitFraction extends Fraction{
+
+    /**
+     * Normal Constructor
+     * 
+     * @param numerator - Numerator for the Fraction.
+     * @param denominator-  Denominator for the Fraction.
+     */
+    public UnitFraction(int numerator, int denominator) {
+        super(numerator, denominator);
+    }
+
+    /**
+     * Copy Constructor
+     * @param f - Fraction or UnitFraction to copy
+     */
+    public UnitFraction(Fraction f) {
+        super(f);
+    }
+    
+    
+    @Override
+    public String toString(){
+        return "UnitFraction "+Integer.toString(+this.getNumerator()) + "/" + Integer.toString(this.getDenominator());
+    }
 
 }

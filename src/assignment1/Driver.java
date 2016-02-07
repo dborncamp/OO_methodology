@@ -56,6 +56,9 @@ public class Driver {
         System.out.println("Division: "+div);
         
         System.out.println(div.equals(multi));
+        
+        UnitFraction unit = new UnitFraction(1,3);
+        System.out.println(unit);
                 
     }
     
