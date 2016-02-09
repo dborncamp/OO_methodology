@@ -29,7 +29,14 @@ package assignment1;
 /**
  *
  * @author Dave Borncamp <dbornc1@students.towson.edu>
- * @date {date?date?string("dd/mm/yyyy")}
+ * @date 02/07/16
+ * 
+ * A unit fraction is defined as a fraction where the numerator is one and the denominator is a positive integer.
+ * Make sure to check that the arguments are good
+ * 
+ *  In order to make this class immutable this class would need to remove all setters and make the class final so 
+ * that methods cannot be overridden. Then all of the variables should also be made private and final so that they
+ * cannot be accessed directly. 
  */
 public class UnitFraction extends Fraction{
 
@@ -39,8 +46,16 @@ public class UnitFraction extends Fraction{
      * @param numerator - Numerator for the Fraction.
      * @param denominator-  Denominator for the Fraction.
      */
+    
+    private void check(int num, int den){
+        if (num != 1 || den < 0){
+            throw new IllegalArgumentException();
+        }
+    }
+    
     public UnitFraction(int numerator, int denominator) {
         super(numerator, denominator);
+        check(numerator, denominator);
     }
 
     /**
@@ -49,6 +64,7 @@ public class UnitFraction extends Fraction{
      */
     public UnitFraction(Fraction f) {
         super(f);
+        check(f.getNumerator(), f.getDenominator());
     }
     
     
