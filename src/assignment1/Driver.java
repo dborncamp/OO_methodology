@@ -59,7 +59,23 @@ public class Driver {
         
         UnitFraction unit = new UnitFraction(1,3);
         System.out.println(unit);
-                
+         
+        System.out.println(F1.add(unit));
+   
+        
+        System.out.println("Trying bad Fraction:");
+        try{
+            Fraction bad = new Fraction(5,0);
+        } catch (Exception e){
+            System.out.println(e);
+        }
+        
+        System.out.println("Trying bad unit fraction:");
+        try{
+            UnitFraction bad = new UnitFraction(5,4);
+        } catch (Exception e){
+            System.out.println(e);
+        }
     }
     
 }

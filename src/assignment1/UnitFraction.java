@@ -46,18 +46,23 @@ public class UnitFraction extends Fraction{
      * @param numerator - Numerator for the Fraction.
      * @param denominator-  Denominator for the Fraction.
      */
-    
-    private void check(int num, int den){
-        if (num != 1 || den < 0){
-            throw new IllegalArgumentException();
-        }
-    }
-    
     public UnitFraction(int numerator, int denominator) {
         super(numerator, denominator);
         check(numerator, denominator);
     }
-
+    
+    /**
+     * Check that the fraction is a unit fraction
+     * 
+     * @param numerator - Numerator for the Fraction.
+     * @param denominator-  Denominator for the Fraction.
+     */
+    private void check(int num, int den){
+        if (num != 1 || den < 0){
+            throw new IllegalArgumentException("UnitFraction must have Numerator of 1 and Denominator !=0");
+        }
+    }
+    
     /**
      * Copy Constructor
      * @param f - Fraction or UnitFraction to copy

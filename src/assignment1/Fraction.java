@@ -28,6 +28,8 @@ package assignment1;
 /**
  *
  * @author Dave Borncamp <dbornc1@students.towson.edu>
+ * 
+ * See https://github.com/dborncamp/OO_methodology/tree/master/src/assignment1 for code.
  */
 public class Fraction {
     private int numerator;
@@ -40,8 +42,8 @@ public class Fraction {
      * @param denominator - Denominator for the Fraction.
      */
     public Fraction(int numerator, int denominator) {
-        this.numerator = numerator;
-        this.denominator = denominator;
+        setNumerator(numerator);
+        setDenominator(denominator);
         this.checkSign();
     }
 
@@ -51,8 +53,10 @@ public class Fraction {
      * @param f - The Fraction to copy.
      */
     public Fraction(Fraction f) {
-        this.numerator = f.numerator;
-        this.denominator = f.denominator;
+ //       this.numerator = f.numerator;
+ //       this.denominator = f.denominator;
+        setNumerator(f.getNumerator());
+        setDenominator(f.getDenominator());
         this.checkSign();
     }
     
@@ -104,7 +108,11 @@ public class Fraction {
      * This will check the sign of the input using  {@link #checkSign() } to ensure that the sign of the fraction is correct
      */
     public void setDenominator(int denominator) {
-        this.denominator = denominator;
+        if (denominator !=0){
+            this.denominator = denominator;
+        } else {
+            throw new IllegalArgumentException("0 Denominator not allowed");
+        }
         checkSign();
     }
     
