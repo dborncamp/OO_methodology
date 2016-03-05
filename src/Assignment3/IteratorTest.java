@@ -45,7 +45,8 @@ public class IteratorTest {
         eatAtJoesMenu.add("Apetizer1", 1, false, 2.99 );
         eatAtJoesMenu.add("Apetizer2", 1, false, 4.99 );
         eatAtJoesMenu.add("Lobster Dinner", 2, false, 24.99 ); // 1 for “main dish” category
-        eatAtJoesMenu.add("Main2", 2, false, 44.99 );
+        eatAtJoesMenu.add("Main2", 2, true, 44.99 );
+        eatAtJoesMenu.add("Main3", 2, true, 12.99 );
         eatAtJoesMenu.add("Desert1", 3, false, 14.99 );
         eatAtJoesMenu.add("Desert2", 3, false, 2.99 );
        
@@ -69,6 +70,23 @@ public class IteratorTest {
             mainDish.next();
         }
 
+        MenuIterator heart = eatAtJoesMenu.getHeartHealthy();
+        System.out.println("\nHeart Healthy");
+        while (heart.hasNext()){
+            MenuItem item = (MenuItem) heart.getItem();
+            System.out.println(item.getItemName() + " $" + item.getPrice());
+            heart.next();
+        }
+        
+        
+        double itemPrice = 25.00;
+        MenuIterator price = eatAtJoesMenu.getPriceIterator(itemPrice);
+        System.out.println("\nPrice of main dish");
+        while (price.hasNext()){
+            MenuItem item = (MenuItem) price.getItem();
+            System.out.println(item.getItemName() + " $" + item.getPrice());
+            price.next();
+        }        
     }
 
 }

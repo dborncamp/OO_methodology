@@ -7,7 +7,7 @@ package Assignment3;
  * 
  * Created for COSC 716 Spring 2016 at Towson University.
  *
- *
+ * Menu Item class. Holds the information for each item on the menu.
  */
 public class MenuItem {
     private String itemName;
@@ -37,5 +37,4 @@ public class MenuItem {
     public double getPrice() {
         return price;
     }
-
 }
