@@ -31,4 +31,6 @@ package Assignment5;
  */
 public interface AddOn {
     public String getLines();
+
+    public boolean applies(PurchasedItems items);
 }

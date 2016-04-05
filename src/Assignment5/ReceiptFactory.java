@@ -49,7 +49,7 @@ import java.util.Date;
     }
 
     /**
-     * Custom exception for trying to add addons that dont exist.
+     * Custom exception for trying to add addons that don't exist.
      */
     private static class UnknownAddOnTypeException extends Exception {
         public UnknownAddOnTypeException() {

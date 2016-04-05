@@ -1,5 +1,7 @@
 package Assignment5;
 
+import java.util.Date;
+
 /**
  *
  * @author Dave Borncamp <dbornc1@students.towson.edu>
@@ -10,6 +12,6 @@ package Assignment5;
  *
  */
 public abstract class TaxComputation {
-    public abstract double computeTax(PurchasedItems items, ReceiptDate date);
+    public abstract double computeTax(PurchasedItems items, Date date);
     protected abstract boolean taxHoliday();
 }

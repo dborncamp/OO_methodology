@@ -19,6 +19,12 @@ public class Rebate1406 implements AddOn, Applies, Rebate {
     public boolean applies(PurchasedItems items) {
         // implemented to check if any of the items in purchased items
         // is item # 1406
-
+        boolean correctItem = false;
+        for (Item i:items.getPurchasedItems()){
+            if (i.getItemNumber() == 1406){
+                correctItem = true;
+            }
+        }
+        return correctItem;
     }
 }
