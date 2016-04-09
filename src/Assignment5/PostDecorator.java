@@ -9,14 +9,23 @@ package Assignment5;
  *
  *
  */
-class PostDecorator implements Receipt {
-
-    public PostDecorator(AddOn a, Receipt receipt) {
+class PostDecorator extends Decorator {
+    private AddOn a;
+    private PurchasedItems items;
+    
+    public PostDecorator(AddOn a, Receipt r, PurchasedItems items) {
+        super(r);
+        
+        this.a = a;
+        this.items = items;
     }
 
     @Override
     public void prtReceipt() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // Do the printing
+        System.out.println(a.getLines(items));
+        // Call the trailer to finish the receipt
+        super.callTrailer();
     }
 
 }

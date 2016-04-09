@@ -11,6 +11,7 @@ package Assignment5;
  */
 public abstract class Decorator implements Receipt {
     private Receipt trailer;
+    
     public Decorator(Receipt r) {
         trailer = r;
     }

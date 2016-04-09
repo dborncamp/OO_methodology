@@ -5,18 +5,20 @@ import java.util.Date;
 /**
  *
  * @author Dave Borncamp <dbornc1@students.towson.edu>
- * @date Apr 4, 2016
+ * @date Apr 8, 2016
  * 
  * Created for COSC 716 Spring 2016 at Towson University.
  *
  *
  */
-public class MDTaxCompute extends TaxComputation{
+class CATaxComputation extends TaxComputation {
+
+    public CATaxComputation() {
+    }
 
     @Override
     public double computeTax(PurchasedItems items, Date date) {
-        // MD has 6% tax in this assignment.
-        double totalTax = items.getTotal() * 0.06;
+        double totalTax = items.getTotal() * 0.075;
         return totalTax;
     }
 

@@ -50,6 +50,6 @@ public class Item {
      */
     @Override
     public String toString(){
-        return name + " $ " + price;
+        return itemNumber + " " + name + ": $ " + price+"\n";
     }
 }

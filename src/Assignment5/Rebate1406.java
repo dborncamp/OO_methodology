@@ -11,10 +11,15 @@ package Assignment5;
  */
 public class Rebate1406 implements AddOn, Applies, Rebate {
     @Override
-    public String getLines() {
-        return "Mail-in Rebate for Item #1406\n" + "Name:\n” + “Address:\n\n" +
-         "Mail to: Best Buy Rebates, P.O. Box 1400, Orlando, FL";
+    public String getLines(PurchasedItems items) {
+        if (applies(items)){
+            Item item = items.getItem(1406);
+            return "Mail-in Rebate for Item #1406\n" + "Name: "+ item.getName() + "\nAddress:\n" +
+            "Mail to: Best Buy Rebates, P.O. Box 1400, Orlando, FL\n";
+        }
+        return "";
     }
+        
     @Override
     public boolean applies(PurchasedItems items) {
         // implemented to check if any of the items in purchased items

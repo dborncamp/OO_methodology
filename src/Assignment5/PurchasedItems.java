@@ -1,6 +1,7 @@
 package Assignment5;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -14,9 +15,11 @@ import java.util.ArrayList;
 
 public class PurchasedItems {
     private ArrayList<Item> purchasedItems;
+    private final Date date;
 
-    public PurchasedItems() {
+    public PurchasedItems(Date date) {
         this.purchasedItems = new ArrayList<Item>();
+        this.date = date;
     }
 
     /**
@@ -35,6 +38,14 @@ public class PurchasedItems {
         purchasedItems.add(item);
     }
     
+    public Item getItem(int itemNumber){
+        for (Item i:purchasedItems){
+            if (i.getItemNumber() == itemNumber){
+                return i;
+            }
+        }
+        return null;
+    }
     /**
      * Removes a given item from the purchased items
      * @param item  - Item to remove.
@@ -54,6 +65,10 @@ public class PurchasedItems {
             total += i.getPrice();
         }
         return total;
+    }
+
+    public Date getDate() {
+        return date;
     }
 
     /**

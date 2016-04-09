@@ -23,14 +23,50 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
+
 package Assignment5;
+
+import java.util.Date;
 
 /**
  *
  * @author Dave Borncamp <dbornc1@students.towson.edu>
+ * @date Apr 8, 2016
+ * 
+ * Created for COSC 716 Spring 2016 at Towson University.
+ * 
+ * This file was origionally named Client.java.
+ *
+ *
  */
-public interface AddOn {
-    public String getLines(PurchasedItems items);
+public class Client {
 
-    public boolean applies(PurchasedItems items);
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Item  item1 = new Item("Item1",5,4.5);
+        Item  item2 = new Item("Item2",14,40.0);
+        Item  item3 = new Item("item3",1406, 12.75);
+        Date today = new Date(2016, 12, 16);
+        
+        
+        PurchasedItems purchase = new PurchasedItems(today);
+        purchase.addItem(item1);
+        purchase.addItem(item2);
+        purchase.addItem(item3);
+        
+
+        
+        try{
+            ReceiptFactory factory = new ReceiptFactory(purchase, today);
+            Receipt receipt = factory.getReceipt();
+            receipt.prtReceipt();
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        
+    }
+
 }

@@ -1,5 +1,7 @@
 package Assignment5;
 
+import java.util.Date;
+
 /**
  *
  * @author Dave Borncamp <dbornc1@students.towson.edu>
@@ -11,8 +13,16 @@ package Assignment5;
  */
 public class HolidayGreeting  implements AddOn, Greeting {
     @Override
-    public String getLines() {
-        return "* Happy Holidays from Best Buy *";
+    public String getLines(PurchasedItems items) {
+        if (applies(items)){
+            return "* Happy Holidays from Best Buy *";
+        }
+        return "";
+    }
+
+    @Override
+    public boolean applies(PurchasedItems items) {
+         return items.getDate().after(new Date(2016, 12, 0)) && items.getDate().before(new Date(2016,12,30));
     }
 
 }

@@ -25,7 +25,15 @@ public class BasicReceipt implements Receipt{
     public void setTaxComputation(TaxComputation tc) {
         this.tc = tc;
     }
+    
+    @Override
     public void prtReceipt() {
+        System.out.println("Purchased on:"+date);
+        System.out.println("\n Items in cart:");
+        System.out.println(items);
+        System.out.println("\nSub Total:"+items.getTotal());
+        System.out.println("Total Tax: "+tc.computeTax(items, date));
+        System.out.println("Total after tax: "+(tc.computeTax(items, date)+items.getTotal()));
     // to implement
     }
 }
