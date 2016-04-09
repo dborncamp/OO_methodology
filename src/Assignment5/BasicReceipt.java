@@ -13,14 +13,14 @@ import java.util.Date;
  */
 public class BasicReceipt implements Receipt{
     private String storeInfo; // store number, store address, phone number
-    private String stateCode; // MD, DE, CA or MA
     private PurchasedItems items;
     private Date date;
     private TaxComputation tc;
     
-    public BasicReceipt(PurchasedItems items, Date date) {
+    public BasicReceipt(PurchasedItems items, Date date,String storeInfo) {
         this.items = items;
         this.date = date;
+        this.storeInfo = storeInfo;
     }
     public void setTaxComputation(TaxComputation tc) {
         this.tc = tc;
@@ -28,12 +28,15 @@ public class BasicReceipt implements Receipt{
     
     @Override
     public void prtReceipt() {
-        System.out.println("Purchased on:"+date);
+        System.out.println(storeInfo);
+        System.out.println("\nPurchased on:"+date);
         System.out.println("\n Items in cart:");
         System.out.println(items);
         System.out.println("\nSub Total:"+items.getTotal());
         System.out.println("Total Tax: "+tc.computeTax(items, date));
+        if (tc.computeTax(items, date) == 0.0){
+            System.out.println("Tax Holiday!!");
+        }
         System.out.println("Total after tax: "+(tc.computeTax(items, date)+items.getTotal()));
-    // to implement
     }
 }

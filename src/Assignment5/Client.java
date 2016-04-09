@@ -45,23 +45,56 @@ public class Client {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        //Set up some items
         Item  item1 = new Item("Item1",5,4.5);
         Item  item2 = new Item("Item2",14,40.0);
         Item  item3 = new Item("item3",1406, 12.75);
-        Date today = new Date(2016, 12, 16);
+        Item  item4 = new Item("item4",3610, 120.00);
+        Item  item5 = new Item("item5",1, 75.00);
         
+        //Set up some dates
+        Date taxTest = new Date(2016, 8, 16);
+        Date today = new Date(2016,4,9);
+        Date holidayTest = new Date(2016,12,16);
         
-        PurchasedItems purchase = new PurchasedItems(today);
-        purchase.addItem(item1);
-        purchase.addItem(item2);
-        purchase.addItem(item3);
+        //Test the tax holiday and mail-in rebate
+        PurchasedItems taxPurchase = new PurchasedItems(taxTest);
+        taxPurchase.addItem(item1);
+        taxPurchase.addItem(item2);
+        taxPurchase.addItem(item3);
         
-
+        //Test the holiday greeting and mail-in rebate
+        PurchasedItems holidayPurchase = new PurchasedItems(holidayTest);
+        holidayPurchase.addItem(item1);
+        holidayPurchase.addItem(item2);
+        holidayPurchase.addItem(item3);
+        
+           //Test the holiday greeting and mail-in rebate
+        PurchasedItems couponPurchase = new PurchasedItems(today);
+        couponPurchase.addItem(item1);
+        couponPurchase.addItem(item2);
+        couponPurchase.addItem(item3);
+        couponPurchase.addItem(item4);
+        couponPurchase.addItem(item5);
         
         try{
-            ReceiptFactory factory = new ReceiptFactory(purchase, today);
+            System.out.println("Receipt 1\n");
+            ReceiptFactory factory = new ReceiptFactory(taxPurchase);
             Receipt receipt = factory.getReceipt();
             receipt.prtReceipt();
+            
+            System.out.println("********************************************************************\n");
+            System.out.println("Receipt 2 (same as 1 except new date for holiday greeting):\n");
+            ReceiptFactory hfactory = new ReceiptFactory(holidayPurchase);
+            Receipt hreceipt = hfactory.getReceipt();
+            hreceipt.prtReceipt();
+            
+            System.out.println("********************************************************************\n");
+            System.out.println("Receipt 3 (Test Coupons and multiple rebates):\n");
+            ReceiptFactory cfactory = new ReceiptFactory(couponPurchase);
+            Receipt creceipt = cfactory.getReceipt();
+            creceipt.prtReceipt();            
+            
         } catch(Exception e){
             e.printStackTrace();
         }

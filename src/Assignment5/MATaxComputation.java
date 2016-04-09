@@ -24,8 +24,8 @@ class MATaxComputation extends TaxComputation {
 
     @Override
     protected boolean taxHoliday(Date date) {
-        Date holidayDate1 = new Date(2016, 8, 16);
-        Date holidayDate2 = new Date(2016, 8, 17);
+        Date holidayDate1 = new Date(2016, 8, 15);
+        Date holidayDate2 = new Date(2016, 8, 18);
         
         return date.after(holidayDate1) && date.before(holidayDate2);  
     }

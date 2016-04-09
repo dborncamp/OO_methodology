@@ -9,8 +9,8 @@ package Assignment5;
  *
  *
  */
-public class Rebate1406 implements AddOn, Applies, Rebate {
-    int itemNumber = 1406;
+public class Rebate3610 implements AddOn, Applies, Rebate {
+    int itemNumber = 3610;
     @Override
     public String getLines(PurchasedItems items) {
         if (applies(items)){
@@ -24,7 +24,7 @@ public class Rebate1406 implements AddOn, Applies, Rebate {
     @Override
     public boolean applies(PurchasedItems items) {
         // implemented to check if any of the items in purchased items
-        // is item # 1406
+        // is item # 3610
         boolean correctItem = false;
         for (Item i:items.getPurchasedItems()){
             if (i.getItemNumber() == itemNumber){
