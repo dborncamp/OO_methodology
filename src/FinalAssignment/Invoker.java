@@ -16,4 +16,9 @@ public class Invoker {
        CMDGetMenu menuCMD = new CMDGetMenu(menuAgg);
        return menuCMD.execute();
     }
+    
+    public Tabs getTabs(){
+        CMDGetTabs tabsCMD = new CMDGetTabs(menuAgg);
+        return tabsCMD.execute();
+    }
 }

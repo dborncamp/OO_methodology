@@ -11,14 +11,49 @@ package FinalAssignment;
  */
 public class MenuAggrigator {
     Menu menu;
-    Tabs tab;
+    Orders order;
 
-    public Menu getMenu(){
-        return menu;
+    /**
+     *Creates an aggrigator with no data in it. empty menus and orders.
+     */
+    public MenuAggrigator() {
+        this.menu = new Menu();
+        this.order = new  Orders();
     }
     
-    public Tabs getTabs(){
-        return tab;
+    /**
+     * Create an Aggrigator to serve data.
+     * 
+     * @param menu - Menu to use
+     * @param order - Orders to use
+     */
+    public MenuAggrigator(Menu menu, Orders order) {
+        this.menu = menu;
+        this.order = order;
+    }
+    
+    /**
+     * Get a copy of the menu from the Aggrigator.
+     * @return - copy of the Menu
+     */
+    public Menu getMenu(){
+        return new Menu(menu);
+    }
+    
+    /**
+     * Add an item to the aggrigator's copy of the menu
+     * @param item - item to add
+     */
+    public void addMenu(MenuItems item){
+        menu.addItem(item);
+    }
+    
+    /**
+     * Get a copy of the orders.
+     * @return - copy of the orders
+     */
+    public Orders getOrders(){
+        return new Orders(order);
     }
     
 }
