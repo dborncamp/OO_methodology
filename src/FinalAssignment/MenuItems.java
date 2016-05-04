@@ -11,10 +11,10 @@ import java.util.ArrayList;
  *
  *
  */
-public class MenuItems {
+public class MenuItems implements IngredientObserver {
     private final String name;
     private final String descrip;
-    private final double price;
+    private double price;
     private final ArrayList<IngredientItems>  ingItem;
 
     /**
@@ -30,8 +30,25 @@ public class MenuItems {
         this.descrip = descrip;
         this.price = price;
         this.ingItem = ingredients;
+        registerIngredients();
+    }
+    
+    /**
+     * Lower the price by 10% because we have many in stock
+     */
+    @Override
+    public void updateMany(){
+        this.price = this.price * 0.9;
     }
 
+    /**
+     * Raise the price by 10% because we have fewer stock
+     */
+    @Override
+    public void updateFew(){
+        this.price = this.price * 1.1;
+    }
+    
     /**
      * Get the name of the item
      * @return - Name of Item
@@ -63,6 +80,11 @@ public class MenuItems {
     public ArrayList<IngredientItems> getIngItem() {
         return ingItem;
     }
-    
+
+    private void registerIngredients() {
+        ingItem.forEach((IngredientItem)->{
+            IngredientItem.register(this);
+        });
+    }
     
 }
