@@ -22,6 +22,11 @@ class IngredientItems implements IngredientSubject{
     }
     
     @Override
+    public String toString(){
+        return name;
+    }
+    
+    @Override
     public void register(IngredientObserver newObserver) {
         // Adds a new observer to the ArrayList
         observers.add(newObserver);

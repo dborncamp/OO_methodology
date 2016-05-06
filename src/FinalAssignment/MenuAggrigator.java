@@ -18,7 +18,7 @@ public class MenuAggrigator {
      */
     public MenuAggrigator() {
         this.menu = new Menu();
-        this.order = new  Orders();
+        this.order = new Orders();
     }
     
     /**

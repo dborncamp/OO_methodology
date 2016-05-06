@@ -1,5 +1,7 @@
 package FinalAssignment;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Dave Borncamp <dbornc1@students.towson.edu>
@@ -10,14 +12,40 @@ package FinalAssignment;
  *
  */
 public class SystemInterface {
-    private static Invoker invoker;
-    //Should only have static menthods 
-    public static String getMenu(){
-        String menu;
+    
+    private Invoker invoker = new Invoker();
+    
+    public String getMenu(){
         // should be implemented here  not in the tostring of menu...
-        menu = invoker.getMenu().toString();
+        Menu menu = invoker.getMenu();
         
-        return menu;
+        StringBuilder sb=new StringBuilder();  
+        ArrayList<MenuItems> menuArray = menu.getAllItems();
+        
+        // Add a greeting at the top
+        sb.append("Dave's Restraunt\n");
+        sb.append("Menu\n");
+        
+        // Put the items on the string menu
+        for (MenuItems i:menuArray){
+            sb.append(i.toString()+"\n");
+        }
+        
+        return sb.toString();
+    }
+    
+    public void makeOrder(){
+        
     }
 
+    public String getStock(){
+         ArrayList<IngredientItems> items = invoker.getStock();
+         StringBuilder sb=new StringBuilder();
+         
+         for(IngredientItems item: items){
+             sb.append(item.toString()+"\n");
+         }
+         
+         return sb.toString();
+    }
 }

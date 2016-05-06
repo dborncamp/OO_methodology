@@ -26,11 +26,13 @@ public class MenuItems implements IngredientObserver {
      * @param ingredients - ingredients that make up the menu item
      */
     public MenuItems(String name, String descrip, double price, ArrayList ingredients) {
+        //System.out.println(name + " " +descrip+" "+price+" "+ingredients.toString());
         this.name = name;
         this.descrip = descrip;
         this.price = price;
         this.ingItem = ingredients;
         registerIngredients();
+        //System.out.println(this.ingItem);
     }
     
     /**
@@ -87,4 +89,10 @@ public class MenuItems implements IngredientObserver {
         });
     }
     
+    @Override
+    public String toString(){
+        String outString = name+"        "+Double.toString(price) + "\n"+ descrip+"\n";
+        
+        return outString;
+    }
 }

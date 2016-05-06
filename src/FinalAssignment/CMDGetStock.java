@@ -13,10 +13,11 @@ import java.util.ArrayList;
  */
 public class CMDGetStock  implements Command{
     MenuAggrigator menuAgg;
-    ArrayList<ArrayList> ingredients;
+    ArrayList<IngredientItems> ingredients;
 
     public CMDGetStock(MenuAggrigator menuAgg) {
         this.menuAgg = menuAgg;
+        this.ingredients = new ArrayList<IngredientItems>();
     }
     
     /**
@@ -24,9 +25,9 @@ public class CMDGetStock  implements Command{
      * @return
      */
     @Override
-    public ArrayList execute() {
+    public ArrayList<IngredientItems> execute() {
        for (MenuItems item:menuAgg.getMenu().getAllItems()){
-           ingredients.add(item.getIngItem());
+           ingredients.addAll(item.getIngItem());
         }
        return ingredients;
     }
