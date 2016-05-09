@@ -14,13 +14,16 @@ import java.util.ArrayList;
 class IngredientItems implements IngredientSubject{
     private ArrayList<IngredientObserver> observers;
     private final String name;
-    private static int stock = 0;  // keep track of stock of these.
+    private int stock = 0;  // keep track of stock of these.
 
     public IngredientItems(String name) {
         this.name = name;
         observers = new ArrayList<IngredientObserver>();
     }
     
+    public int getStock(){
+        return this.stock;
+    }
     @Override
     public String toString(){
         return name;
@@ -30,7 +33,6 @@ class IngredientItems implements IngredientSubject{
     public void register(IngredientObserver newObserver) {
         // Adds a new observer to the ArrayList
         observers.add(newObserver);
-
     }
     
     @Override
@@ -41,6 +43,7 @@ class IngredientItems implements IngredientSubject{
     private void notifyObserverMany() {
         // Cycle through all observers and notifies them of
         // price changes
+        System.out.println("Price Changed");
         observers.stream().forEach((observer) -> {
             observer.updateMany();
         });
@@ -53,19 +56,28 @@ class IngredientItems implements IngredientSubject{
             observer.updateFew();
         });
     }
-    public void addStock(){
-        stock ++;
-        // reduce price by 10% for each 10 we remove
-        if (stock %10 == 0){
-            notifyObserverMany();
+  
+  
+    public void addStock(boolean init){
+        if (init ==true){
+            this.stock ++;
+        } else {
+            this.stock ++;
+            System.out.print(this.stock);
+            // reduce price by 10% for each 10 we remove
+            if (this.stock %10 == 0){
+                notifyObserverMany();
+            }
         }
     }
 
     public void removeIngredient() throws ZeroStockException{
-        if (stock > 0){
-            stock --;
+        if (this.stock > 0){
+            this.stock --;
+            System.out.println(" Reduce stock "+ this.name+ " "+this.stock);
+
             // increase price by 10% for each 10 we remove
-            if (stock % 10 == 0){
+            if (this.stock % 10 == 0){
                 notifyObserverFew();
             }
         } else{
@@ -77,7 +89,7 @@ class IngredientItems implements IngredientSubject{
     /**
      * Exception that is thrown when there is no more of a particular item.
      */
-    private static class ZeroStockException extends Exception {
+    protected static class ZeroStockException extends Exception {
         public ZeroStockException(String name) {
             super("No More "+name+" available!");
         }

@@ -23,13 +23,18 @@ public class Invoker {
        return menuCMD.execute();
     }
     
-    public Tabs getTabs(){
-        CMDGetTabs tabsCMD = new CMDGetTabs(menuAgg);
-        return tabsCMD.execute();
-    }
     
     public ArrayList<IngredientItems> getStock(){
         CMDGetStock stockCMD = new CMDGetStock(menuAgg);
         return stockCMD.execute();
+    }
+    
+    public Orders getTab(){
+        CMDGetTabs tabCMD = new CMDGetTabs(menuAgg);
+        return tabCMD.execute();
+    }
+    
+    public void makeOrder(MenuItems item) throws IngredientItems.ZeroStockException{
+        menuAgg.addOrder(item);
     }
 }

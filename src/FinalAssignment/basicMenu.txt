@@ -1,0 +1,7 @@
+Chicken Parmesan,Breaded Chicken Parmesan, 12.95,chicken/bread crumbs/marinara sause
+Rosemary Chicken,Chicken with Rosemary, 13.95,chicken/rosemary/salt
+Orange Chicken #12, House Orange Chicken, 12.00,chicken/orange sause/salt
+French Toast,A great breakfast treat for anytime,10.00,bread/butter/egg/blueberry
+Fillet Mignon,The best Steak you'll ever have,45.50,steak/butter/salt
+Green Beans,Not worthe the price but go with anything,8.00,green beans/butter
+Peanut Butter Burger,Because this is an upscale place to make a mess,17.50,hamburger/peanut butter/buns/pickle

@@ -9,7 +9,7 @@ package FinalAssignment;
  *
  *
  */
-public class OrderItems {
+public class OrderItems implements Visitable {
     private final MenuItems orderedItem;
     
     public OrderItems(MenuItems item){
@@ -23,5 +23,15 @@ public class OrderItems {
     public MenuItems getOrderedItem() {
         return orderedItem;
     }
+
+    @Override
+    public String accept(Visitor visit) {
+        MenuItems item = getOrderedItem();
+        return item.getName() + ": " + Double.toString(item.getPrice());
+    }
     
+    @Override
+    public String toString(){
+        return orderedItem.toString();
+    }
 }

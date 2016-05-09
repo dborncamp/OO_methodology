@@ -23,51 +23,14 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-
 package FinalAssignment;
 
 /**
  *
  * @author Dave Borncamp <dbornc1@students.towson.edu>
- * @date May 5, 2016
- * 
- * Created for COSC 716 Spring 2016 at Towson University.
- * 
- * This file was originally named Driver.java.
- *
- *
  */
-public class Driver {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        System.out.println("Start:");
-
-        System.out.println("end");
-        SystemInterface inter = new SystemInterface();
-        String menu;
-        menu = inter.getMenu();
-        System.out.println(menu);
-        System.out.println("");
-        System.out.println(inter.getStock());
-        
-        
-        inter.makeOrder();
-        inter.makeOrder();
-        inter.makeOrder();
-
-        
-        //System.out.println(inter.getTab());
-        System.out.println("");
-        System.out.println(inter.getStock());
-        System.out.println(menu);
-        
-        System.out.println("");
-        System.out.println("New Menu:");
-        System.out.println(inter.getStock());
-        System.out.println( inter.getMenu());        
-    }
-
+public interface Visitable {
+    
+    public String accept(Visitor visit);
+    
 }

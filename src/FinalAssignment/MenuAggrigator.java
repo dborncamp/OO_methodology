@@ -1,5 +1,7 @@
 package FinalAssignment;
 
+import FinalAssignment.IngredientItems.ZeroStockException;
+
 /**
  *
  * @author Dave Borncamp <dbornc1@students.towson.edu>
@@ -56,4 +58,12 @@ public class MenuAggrigator {
         return new Orders(order);
     }
     
+    /**
+     * Add an order to the order list
+     * @param item
+     * @throws IngredientItems.ZeroStockException - If there are no ingredients left in stock to make the item.
+     */
+    public void addOrder(MenuItems item) throws ZeroStockException{
+        order.addItem(item);
+    }
 }

@@ -50,21 +50,21 @@ public class Menu {
                 initItem(comp[0], comp[1], price, ingList);
                 
                 // Initialize stock 12 for each thing in the menu.
-                initStock();
+
             }
 
             // Always close files.
             bufferedReader.close();
         } catch(FileNotFoundException ex) {
             System.out.println(
-                "Unable to open file '" + 
-                menuFile + "'");
+                "Unable to Find file '" + menuFile + "'");
         } catch(IOException ex) {
             System.out.println(
-                "Error reading file '" 
-                + menuFile + "'"); 
+                "Error reading file '"    + menuFile + "'"); 
         }
-        
+        System.out.println("Init stock");
+        initStock();
+        System.out.println("end stock");
 //        System.out.println("Menu successfully made!!!");
 //        System.out.println(menuArray.isEmpty());
 //        System.out.println(menuArray.get(1));
@@ -108,14 +108,20 @@ public class Menu {
     }
     
     /**
-     * Add 12 stock for every inventory item.
+     * Add 10 stock for every inventory item.
      */
     private void initStock(){
-        for (MenuItems i:menuArray){
-            for(IngredientItems ing:i.getIngItem()){
-                for(int j=0; j==11; j++){
-                    ing.addStock();
+        ArrayList<IngredientItems> ingredients = null;
+        for (MenuItems mA:menuArray){
+            ingredients = mA.getIngItem();
+            //System.out.println(ingredients);
+            for(IngredientItems ing:ingredients){
+                //System.out.println(ing);
+                ing.addStock(true);
+                for(int tmp=0; tmp < 11; tmp++){
+                    ing.addStock(true);
                 }
+                //System.out.println( " End");
             }
         }
     }

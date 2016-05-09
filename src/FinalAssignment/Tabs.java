@@ -72,7 +72,7 @@ public class Tabs {
      * Get the total price of the items in the tab.
      * @return - Total price of items in tabArray.
      */
-    public double getTotal(){
+    private double getTotal(){
         double sum = 0.0;
         for (MenuItems i:tabArray){
             sum += i.getPrice();

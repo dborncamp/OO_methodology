@@ -18,8 +18,8 @@ public class CMDGetTabs implements Command{
     
 
     @Override
-    public Tabs execute() {
-        return new Tabs(menuAgg.getOrders());
+    public Orders execute() {
+        return new Orders(menuAgg.getOrders());
     }
 
 }
