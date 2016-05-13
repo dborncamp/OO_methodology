@@ -13,6 +13,7 @@ public class OrderItems implements Visitable {
     private final MenuItems orderedItem;
     
     public OrderItems(MenuItems item){
+        System.out.println("OrderItems - menuItems");
         this.orderedItem = item;
     }
 

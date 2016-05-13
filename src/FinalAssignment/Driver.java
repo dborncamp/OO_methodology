@@ -60,14 +60,14 @@ public class Driver {
 
         
         //System.out.println(inter.getTab());
-        System.out.println("");
-        System.out.println(inter.getStock());
-        System.out.println(menu);
-        
-        System.out.println("");
-        System.out.println("New Menu:");
-        System.out.println(inter.getStock());
-        System.out.println( inter.getMenu());        
+//        System.out.println("");
+//        System.out.println(inter.getStock());
+//        System.out.println(menu);
+//        
+//        System.out.println("");
+//        System.out.println("New Menu:");
+//        System.out.println(inter.getStock());
+//        System.out.println( inter.getMenu());        
     }
 
 }

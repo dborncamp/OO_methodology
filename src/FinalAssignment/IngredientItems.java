@@ -21,6 +21,12 @@ class IngredientItems implements IngredientSubject{
         observers = new ArrayList<IngredientObserver>();
     }
     
+    public IngredientItems(String name, int num) {
+        this.name = name;
+        observers = new ArrayList<IngredientObserver>();
+        System.out.println("Trying to add: "+num+ " stock to "+name);
+        this.stock = num;
+    }
     public int getStock(){
         return this.stock;
     }
@@ -57,6 +63,9 @@ class IngredientItems implements IngredientSubject{
         });
     }
   
+  public String getName(){
+      return this.name;
+  }
   
     public void addStock(boolean init){
         if (init ==true){
@@ -72,9 +81,10 @@ class IngredientItems implements IngredientSubject{
     }
 
     public void removeIngredient() throws ZeroStockException{
+        //System.out.println(name+ " "+ stock);
         if (this.stock > 0){
             this.stock --;
-            System.out.println(" Reduce stock "+ this.name+ " "+this.stock);
+            //System.out.println(" Reduce stock "+ this.name+ " "+this.stock);
 
             // increase price by 10% for each 10 we remove
             if (this.stock % 10 == 0){

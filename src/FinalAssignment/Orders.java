@@ -37,7 +37,9 @@ public class Orders {
      * @throws FinalAssignment.IngredientItems.ZeroStockException
      */
     public void addItem(MenuItems item) throws ZeroStockException{
+        System.out.println("Orders.AddItem - menuitems");
         OrderItems orderedItem = new OrderItems(item);
+        System.out.println("OrderItem made");
         OrderArray.add(orderedItem);
         ArrayList<IngredientItems> ing =  item.getIngItem();
         
@@ -52,6 +54,7 @@ public class Orders {
      * @param item - OrderItems ordered.
      */
     public void addItem(OrderItems item){
+        System.out.println("Orders");
         OrderArray.add(item);
     }
     
@@ -64,6 +67,7 @@ public class Orders {
      * @param ingredients - Ingredients for MenuItem
      */
     public void addItem(String name, String descrip, double price, ArrayList ingredients){
+        System.out.println("Adding to Order");
         OrderArray.add(new OrderItems(new MenuItems(name, descrip, price, ingredients)));
     }    
     

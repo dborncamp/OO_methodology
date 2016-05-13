@@ -25,11 +25,8 @@ public class CMDGetStock  implements Command{
      * @return
      */
     @Override
-    public ArrayList<IngredientItems> execute() {
-       for (MenuItems item:menuAgg.getMenu().getAllItems()){
-           ingredients.addAll(item.getIngItem());
-        }
-       return ingredients;
+    public Inventory execute() {
+       return menuAgg.getInventory();
     }
 
 }

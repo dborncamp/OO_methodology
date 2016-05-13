@@ -1,11 +1,6 @@
 package FinalAssignment;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  *
@@ -19,55 +14,12 @@ import java.util.Arrays;
 public class Menu {
     
     private ArrayList<MenuItems> menuArray;
-    private final String menuFile = "C:\\Users\\Dave\\Documents\\Class\\COSC716OOmethodology\\Assignment1\\src\\FinalAssignment\\basicMenu.txt";
     
     /**
      * Default constructor creates an empty menu.
      */
     public Menu(){
         this.menuArray = new ArrayList<MenuItems>();
-        String line = null;
-        try{
-            FileReader fileReader = new FileReader(menuFile);
-            // Always wrap FileReader in BufferedReader.
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-
-            while((line = bufferedReader.readLine()) != null) {
-                String[] comp = line.split(",");
-                
-                // Build the ingredients
-                ArrayList<String> ingNames = new ArrayList<>(Arrays.asList(comp[3].split("/")));
-                ArrayList<IngredientItems> ingList = new ArrayList<>();
-                        
-                for (String name: ingNames){
-                    IngredientItems ing = new IngredientItems(name);
-                    //System.out.println(ing);
-                    ingList.add(ing);
-                }
-
-                double price = Double.parseDouble(comp[2]);
-                // Make the menu itmes
-                initItem(comp[0], comp[1], price, ingList);
-                
-                // Initialize stock 12 for each thing in the menu.
-
-            }
-
-            // Always close files.
-            bufferedReader.close();
-        } catch(FileNotFoundException ex) {
-            System.out.println(
-                "Unable to Find file '" + menuFile + "'");
-        } catch(IOException ex) {
-            System.out.println(
-                "Error reading file '"    + menuFile + "'"); 
-        }
-        System.out.println("Init stock");
-        initStock();
-        System.out.println("end stock");
-//        System.out.println("Menu successfully made!!!");
-//        System.out.println(menuArray.isEmpty());
-//        System.out.println(menuArray.get(1));
     }
     
     /**
@@ -98,33 +50,15 @@ public class Menu {
         menuArray.add(new MenuItems(name, descrip, price,ingredients));
     }
     
-    private void initItem(String name, String descrip, double price,ArrayList ingredients){
+    public void initItem(String name, String descrip, double price,ArrayList ingredients){
 //        System.out.println(name + " " +descrip+" "+price+" "+ingredients.toString());
-        MenuItems item = new MenuItems(name, descrip, price,ingredients);
+        MenuItems item = new MenuItems(name, descrip, price, ingredients);
 //        System.out.println("Item: " + item+"\n\n");
 //        System.out.println(item.getDescrip());
         //addItem(item);
         this.menuArray.add(item);
     }
-    
-    /**
-     * Add 10 stock for every inventory item.
-     */
-    private void initStock(){
-        ArrayList<IngredientItems> ingredients = null;
-        for (MenuItems mA:menuArray){
-            ingredients = mA.getIngItem();
-            //System.out.println(ingredients);
-            for(IngredientItems ing:ingredients){
-                //System.out.println(ing);
-                ing.addStock(true);
-                for(int tmp=0; tmp < 11; tmp++){
-                    ing.addStock(true);
-                }
-                //System.out.println( " End");
-            }
-        }
-    }
+
     
     /**
      * Removes a given item from the menuArray items

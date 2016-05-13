@@ -24,7 +24,7 @@ public class Invoker {
     }
     
     
-    public ArrayList<IngredientItems> getStock(){
+    public Inventory getStock(){
         CMDGetStock stockCMD = new CMDGetStock(menuAgg);
         return stockCMD.execute();
     }

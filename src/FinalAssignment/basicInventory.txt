@@ -1,0 +1,16 @@
+chicken,21
+bread crumbs,10
+marinara sause,15
+rosemary,11
+salt,19
+orange sause,15
+bread,13
+egg,18
+butter,13
+blueberry,12
+steak,12
+green beans,8
+hamburger,12
+peanut butter,9
+buns,12
+pickle,15

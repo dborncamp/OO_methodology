@@ -53,13 +53,15 @@ public class SystemInterface {
             System.out.println("Please enter the number you would like to order: ");
             int num = getInput();
             MenuItems item = menu.getAllItems().get(num);
+            System.out.println("You Chose:");
             System.out.println(item);
             invoker.makeOrder(item);
-        } catch (InputMismatchException notNum){
-            System.out.println("Try Again.");
+        } catch (IndexOutOfBoundsException notNum){
+            System.out.println("Not Valid: Try Again.");
             makeOrder();
         } catch (ZeroStockException ex) {
             System.out.println("Out of an Ingredient");
+            System.out.println(ex);
             makeOrder();
         }catch (Exception e){
                 e.printStackTrace();
@@ -68,11 +70,14 @@ public class SystemInterface {
     }
 
     public String getStock(){
-         ArrayList<IngredientItems> items = invoker.getStock();
+        Inventory inventory = invoker.getStock();
+//        for (IngredientItems item:menuAgg.getInventory().getAllItems()){
+//           ingredients.addAll(item.getIngItem());
+//        }
          StringBuilder sb=new StringBuilder();
          sb.append("Stock of Ingredient Items\n");
          
-         for(IngredientItems item: items){
+         for(IngredientItems item: inventory.getInventory()){
              String str = item.toString()+ "  "+ item.getStock()+"\n";
              try{
                 //System.out.println(str);
