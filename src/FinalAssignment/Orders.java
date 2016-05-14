@@ -54,7 +54,7 @@ public class Orders {
      * @param item - OrderItems ordered.
      */
     public void addItem(OrderItems item){
-        System.out.println("Orders");
+        System.out.println("Orders: "+item);
         OrderArray.add(item);
     }
     

@@ -94,6 +94,7 @@ public class SystemInterface {
     }
     
     public String getTab(){
+        System.out.println("Tab:");
         Orders order = invoker.getTab();
         OrderVisitor ov = new OrderVisitor();
         StringBuilder sb = new StringBuilder();

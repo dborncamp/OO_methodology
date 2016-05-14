@@ -13,7 +13,7 @@ public class OrderItems implements Visitable {
     private final MenuItems orderedItem;
     
     public OrderItems(MenuItems item){
-        System.out.println("OrderItems - menuItems");
+        //System.out.println("OrderItems - menuItems");
         this.orderedItem = item;
     }
 
@@ -25,6 +25,13 @@ public class OrderItems implements Visitable {
         return orderedItem;
     }
 
+    /**
+     * Implements visitor interface. I know that for now this is the only thing that does but in theory you could
+     * have merchendise at a resturant that would taxed differently than food. or alochol that would be taxed
+     * differently.
+     * @param visit
+     * @return
+     */
     @Override
     public String accept(Visitor visit) {
         MenuItems item = getOrderedItem();

@@ -86,6 +86,9 @@ public class MenuAggrigator {
                 for (String name: ingNames){
                     //System.out.println(name);
                     IngredientItems ing = inventory.getItem(name);
+                    if(ing == null){
+                        System.out.println("Ingredient Not found: "+ing+" "+name);
+                    }
                     //System.out.println(ing);
                     ingList.add(ing);
                 }

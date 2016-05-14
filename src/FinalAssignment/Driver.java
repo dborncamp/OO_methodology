@@ -58,6 +58,7 @@ public class Driver {
         inter.makeOrder();
         inter.makeOrder();
 
+        System.out.println(inter.getTab());
         
         //System.out.println(inter.getTab());
 //        System.out.println("");

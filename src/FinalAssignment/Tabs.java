@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  */
 public class Tabs {
-    private ArrayList<MenuItems> tabArray;  // the list of things on the tab
+    private ArrayList<OrderItems> tabArray;  // the list of things on the tab
     private static int tabId = 0;  // Auto increments when default constructor called.
     
     public Tabs(){
@@ -41,7 +41,7 @@ public class Tabs {
      * Add an item to the ArrayList or tabArray items.
      * @param item - Item to add.
      */
-    public void addItem(MenuItems item){
+    public void addItem(OrderItems item){
         tabArray.add(item);
     }
     
@@ -54,7 +54,9 @@ public class Tabs {
      * @param ingredients - Ingredients for MenuItem
      */
     public void addItem(String name, String descrip, double price, ArrayList ingredients){
-        tabArray.add(new MenuItems(name, descrip, price, ingredients));
+        MenuItems tmpMenu = new MenuItems(name, descrip, price, ingredients);
+        OrderItems tmpOrder = new OrderItems( tmpMenu);
+        tabArray.add(tmpOrder);
     }
     
         /**
@@ -74,8 +76,8 @@ public class Tabs {
      */
     private double getTotal(){
         double sum = 0.0;
-        for (MenuItems i:tabArray){
-            sum += i.getPrice();
+        for (OrderItems i:tabArray){
+            sum += i.getOrderedItem().getPrice();
         }
         
         return sum;
@@ -88,7 +90,7 @@ public class Tabs {
     
     // Should only be called by copy constructor
     private void settabs(ArrayList tab){
-        for (MenuItems i:tabArray){
+        for (OrderItems i:tabArray){
             try{
                 addItem(i);
             } catch(Exception e){
