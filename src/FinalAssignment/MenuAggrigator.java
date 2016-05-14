@@ -21,8 +21,8 @@ public class MenuAggrigator {
     Menu menu;
     Orders order;
     Inventory inventory;
-    private final String menuFile = "C:\\Users\\Dave\\Documents\\Class\\COSC716OOmethodology\\Assignment1\\src\\FinalAssignment\\basicMenu.txt";
-    private final String InventoryFile = "C:\\Users\\Dave\\Documents\\Class\\COSC716OOmethodology\\Assignment1\\src\\FinalAssignment\\basicInventory.txt";
+    private final String menuFile = "src\\FinalAssignment\\basicMenu.txt";
+    private final String InventoryFile = "src\\FinalAssignment\\basicInventory.txt";
 
     /**
      *Creates an aggrigator with no data in it. empty menus and orders.
@@ -62,10 +62,10 @@ public class MenuAggrigator {
             bufferedReader.close();
         } catch(FileNotFoundException ex) {
             System.out.println(
-                "Unable to Find file '" + menuFile + "'");
+                "Unable to Find file '" + InventoryFile + "'");
         } catch(IOException ex) {
             System.out.println(
-                "Error reading file '"    + menuFile + "'"); 
+                "Error reading file '"    + InventoryFile + "'"); 
         }
     }
     

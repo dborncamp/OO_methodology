@@ -49,7 +49,7 @@ class IngredientItems implements IngredientSubject{
     private void notifyObserverMany() {
         // Cycle through all observers and notifies them of
         // price changes
-        System.out.println("Price Changed");
+        System.out.println("\nPrice Changed on "+ getName()+"!!");
         observers.stream().forEach((observer) -> {
             observer.updateMany();
         });
@@ -58,6 +58,7 @@ class IngredientItems implements IngredientSubject{
   private void notifyObserverFew() {
         // Cycle through all observers and notifies them of
         // price changes
+        System.out.println("\nPrice Changed on "+ getName()+"!!");
         observers.stream().forEach((observer) -> {
             observer.updateFew();
         });
